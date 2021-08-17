@@ -13,15 +13,15 @@
         {% for entry in entries %}
         <div>
             <div>id: {{ entry.id }}, text: {{ entry.text }}</div>
-            <form action="/delete">
+            <form action="/delete" method="post">
                 <input type="hidden" name="id" value="{{ entry.id }}">
                 <button>Delete</button>
             </form>
         </div>
         {% endfor %}
     </div>
-
-    <form action="/add">
+ 
+    <form action="/add" method="post">
         <div>
             <input name="text">
         </div>
