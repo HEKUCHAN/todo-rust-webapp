@@ -1,4 +1,14 @@
-use actix_web::{get, App, HttpResponse, HttpServer};
+use actix_web::{get, App, HttpResponse, HttpServer, ResponseError};
+use thiserror::Error;
+
+// エラーをまとめる enum を定義する
+// actix_web::ResponseError として使うために derive マクロで Debug を付与している必要がある
+#[derive(Error, Debug)]
+enum MyError {}
+
+// actix_web::ResponseError を MyError に実装する
+// 今回はデフォルトの実装をそのまま使うから、新たに実装するものはない
+impl ResponseError for MyError {}
 
 #[get("/")]
 async fn index() -> Result<HttpResponse, actix_web::Error> {
